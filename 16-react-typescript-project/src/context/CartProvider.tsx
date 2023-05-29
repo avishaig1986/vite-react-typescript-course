@@ -1,5 +1,6 @@
 import { useReducer, useMemo, createContext, ReactElement } from "react"
 
+// declare a cartitem type
 export type CartItemType = {
     sku: string,
     name: string,
@@ -7,10 +8,13 @@ export type CartItemType = {
     qty: number
 }
 
+// declare a CartStateType which has a cart json object of CartItemType array
 type CartStateType = {cart: CartItemType[]}
 
+// declare the initial state of CartStateType as a cart json array
 const initCartState: CartStateType = {cart: []}
 
+// declare an object REDUCER_ACTION_TYPE
 const REDUCER_ACTION_TYPE = {
     ADD: "ADD",
     REMOVE: "REMOVE",
@@ -18,12 +22,15 @@ const REDUCER_ACTION_TYPE = {
     SUBMIT: "SUBMIT",
 }
 
+// export type which is the type of REDUCER_ACTION_TYPE object
 export type ReducerActionType = typeof REDUCER_ACTION_TYPE
 
+// export type ReducerAction object which has a type string and a nullable payload of CartItemType
 export type ReducerAction = {
     type: string,
     payload?: CartItemType,
 }
+
 
 const reducer = (state: CartStateType, action: ReducerAction): CartStateType => {
     switch (action.type){
